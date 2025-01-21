@@ -7,7 +7,7 @@ Using ``say_my_name``
 Import function from module:
     >>> say_my_name = __import__('3-say_my_name').say_my_name
 
-Test with both first and last name:
+Test basic functionality:
     >>> say_my_name("John", "Smith")
     My name is John Smith
 
@@ -15,51 +15,85 @@ Test with only first name:
     >>> say_my_name("Bob")
     My name is Bob
 
-Test with non-string first name:
-    >>> say_my_name(12, "White")
+Test data types:
+    >>> say_my_name(12, "White") 
     Traceback (most recent call last):
     TypeError: first_name must be a string
-
-Test with non-string last name:
+    
     >>> say_my_name("Walter", 12)
     Traceback (most recent call last):
     TypeError: last_name must be a string
 
-Test with empty strings:
+Test empty strings:
     >>> say_my_name("", "")
     My name is
+    
+    >>> say_my_name("", "Smith")
+    My name is Smith
+    
+    >>> say_my_name("John", "")
+    My name is John
 
-Test with special characters:
+Test special characters:
     >>> say_my_name("John!", "@Smith")
     My name is John! @Smith
+    
+    >>> say_my_name("#John", "$Smith")
+    My name is #John $Smith
 
-Test with None as first name:
+Test None values:
     >>> say_my_name(None)
     Traceback (most recent call last):
     TypeError: first_name must be a string
-
-Test with None as last name:
+    
     >>> say_my_name("John", None)
     Traceback (most recent call last):
     TypeError: last_name must be a string
+    
+    >>> say_my_name(None, None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
 
-Test with numbers as strings:
+Test numeric strings:
     >>> say_my_name("123", "456")
     My name is 123 456
+    
+    >>> say_my_name("-123", "+456")
+    My name is -123 +456
 
-Test with very long names:
-    >>> say_my_name("A"*10, "B"*10)
-    My name is AAAAAAAAAA BBBBBBBBBB
+Test name lengths:    
+    >>> say_my_name("A", "B"*1000)
+    My name is A BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
-Test with spaces:
+Test whitespace:
     >>> say_my_name("   John   ", "   Smith   ")
     My name is    John       Smith   
-
-Test without arguments:
+    
+Test argument validation:
     >>> say_my_name()
     Traceback (most recent call last):
     TypeError: say_my_name() missing 1 required positional argument: 'first_name'
 
-Test with non-ASCII characters:
+Test international characters:
     >>> say_my_name("José", "García")
     My name is José García
+    
+    >>> say_my_name("üñîçødé", "têst")
+    My name is üñîçødé têst
+    
+    >>> say_my_name("汉字", "测试")
+    My name is 汉字 测试
+
+Test with bool values:
+    >>> say_my_name(True, False)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+Test with list/dict/tuple:
+    >>> say_my_name([], {})
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+    
+    >>> say_my_name(["John"], ("Smith",))
+    Traceback (most recent call last):
+    TypeError: first_name must be a string

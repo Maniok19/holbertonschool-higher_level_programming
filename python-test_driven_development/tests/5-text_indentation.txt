@@ -1,4 +1,4 @@
-The ``5-text_indentation`` module
+The ``5-text_indentation`` module 
 ============================
 
 Using ``text_indentation``
@@ -7,74 +7,59 @@ Using ``text_indentation``
 Import function from module:
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Test basic string:
-    >>> text = "abc.def"
-    >>> text_indentation(text)
-    abc.
-    <BLANKLINE>
-    def
+Test single character:
+    >>> text_indentation("a")
+    a
 
-Test multiple delimiters:
-    >>> text = "Hello.How are you?Great: thanks!"
-    >>> text_indentation(text)
-    Hello.
-    <BLANKLINE>
-    How are you?
-    <BLANKLINE>
-    Great:
-    <BLANKLINE>
-    thanks!
-
-Test empty string:
-    >>> text_indentation("")
-    <BLANKLINE>
-
-Test spaces:
-    >>> text = "   Spaces.   More spaces  ?  Even more spaces.   "
-    >>> text_indentation(text)
-    Spaces.
-    <BLANKLINE>
-    More spaces  ?
-    <BLANKLINE>
-    Even more spaces.
-    <BLANKLINE>
-    <BLANKLINE>
-
-Test no delimiters:
-    >>> text = "This text has no delimiters"
-    >>> text_indentation(text)
-    This text has no delimiters
-
-Test consecutive delimiters:
-    >>> text = "Hello..?:World"
-    >>> text_indentation(text)
-    Hello.
-    <BLANKLINE>
+Test single delimiter:
+    >>> text_indentation(".")
     .
     <BLANKLINE>
-    ?
     <BLANKLINE>
-    :
-    <BLANKLINE>
-    World
 
-Test not a string:
-    >>> text = 123
-    >>> text_indentation(text)
-    Traceback (most recent call last):
-    ...
-    TypeError: text must be a string
+Test leading/trailing whitespace:
+    >>> text_indentation("  Hello  ")
+    Hello
 
-Test None:
-    >>> text_indentation(None)
-    Traceback (most recent call last):
-    ...
-    TypeError: text must be a string
-
-Test newlines:
-    >>> text = "Line1\nLine2.Line3"
-    >>> text_indentation(text)
+Test multiple newlines:
+    >>> text_indentation("Line1\n\nLine2")
     Line1
-    Line2.
     <BLANKLINE>
-    Line3
+    Line2
+
+Test all delimiters:
+    >>> text_indentation("First.Second?Third:Fourth")
+    First.
+    <BLANKLINE>
+    Second?
+    <BLANKLINE> 
+    Third:
+    <BLANKLINE>
+    Fourth
+
+Test unicode:
+    >>> text_indentation(u"Hello©.World™?Done®")
+    Hello©.
+    <BLANKLINE>
+    World™?
+    <BLANKLINE>
+    Done®
+
+Test empty line breaks:
+    >>> text_indentation("Line1\n\n\nLine2")
+    Line1
+    <BLANKLINE>
+    <BLANKLINE>
+    Line2
+
+Test list input:
+    >>> text_indentation(["Hello"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Test bool input:
+    >>> text_indentation(True)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
