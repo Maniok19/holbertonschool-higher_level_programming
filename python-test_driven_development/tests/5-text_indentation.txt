@@ -5,8 +5,18 @@ Using ``text_indentation``
 ---------------------
 
 Import function from module:
-    >>> text_indentation = __import__('3-text_indentation').text_indentation
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Test basic
-    >>> text = 
+Test basic:
+    >>> text = "abc.def"
     >>> text_indentation(text)
+    abc.
+    <BLANKLINE>
+    def
+
+Test not a string:
+    >>> text = 123
+    >>> text_indentation(text)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
