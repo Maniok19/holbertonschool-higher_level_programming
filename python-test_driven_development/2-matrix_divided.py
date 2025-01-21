@@ -13,10 +13,10 @@ def matrix_divided(matrix, div):
         new matrix"""
     if type(matrix) is not list or len(matrix) == 0:
         raise TypeError("matrix must be a matrix (list of lists)\
-                         of integers/floats")
+ of integers/floats")
     if type(matrix[0]) is not list:
         raise TypeError("matrix must be a matrix (list of lists)\
-                         of integers/floats")
+ of integers/floats")
     if type(div) not in [int, float]:
         raise TypeError("div must be a number")
     if div == 0:
@@ -27,5 +27,5 @@ def matrix_divided(matrix, div):
         for i in row:
             if type(i) not in [int, float]:
                 raise TypeError("matrix must be a matrix (list of lists)\
-                                 of integers/floats")
+ of integers/floats")
     return [[round(i / div, 2) for i in row] for row in matrix]

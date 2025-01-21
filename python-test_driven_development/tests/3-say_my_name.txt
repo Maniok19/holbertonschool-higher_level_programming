@@ -7,30 +7,59 @@ Using ``say_my_name``
 Import function from module:
     >>> say_my_name = __import__('3-say_my_name').say_my_name
 
-Test with both first and last name
+Test with both first and last name:
     >>> say_my_name("John", "Smith")
     My name is John Smith
 
-Test with only first name
+Test with only first name:
     >>> say_my_name("Bob")
     My name is Bob
 
-Test with non-string first name
+Test with non-string first name:
     >>> say_my_name(12, "White")
     Traceback (most recent call last):
-    ...
     TypeError: first_name must be a string
 
-Test with non-string last name
+Test with non-string last name:
     >>> say_my_name("Walter", 12)
     Traceback (most recent call last):
-    ...
     TypeError: last_name must be a string
 
-Test with empty strings
+Test with empty strings:
     >>> say_my_name("", "")
     My name is
 
-Test with special characters
+Test with special characters:
     >>> say_my_name("John!", "@Smith")
     My name is John! @Smith
+
+Test with None as first name:
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+Test with None as last name:
+    >>> say_my_name("John", None)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+Test with numbers as strings:
+    >>> say_my_name("123", "456")
+    My name is 123 456
+
+Test with very long names:
+    >>> say_my_name("A"*10, "B"*10)
+    My name is AAAAAAAAAA BBBBBBBBBB
+
+Test with spaces:
+    >>> say_my_name("   John   ", "   Smith   ")
+    My name is    John       Smith   
+
+Test without arguments:
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Test with non-ASCII characters:
+    >>> say_my_name("José", "García")
+    My name is José García

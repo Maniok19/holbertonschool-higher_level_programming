@@ -7,6 +7,16 @@ Using ``print_square``
 Import function from module:
     >>> print_square = __import__('4-print_square').print_square
 
+Test normal case:
+    >>> print_square(3)
+    ###
+    ###
+    ###
+
+Test size zero:
+    >>> print_square(0)
+    
+
 Test size is not int:
     >>> print_square("abc")
     Traceback (most recent call last):
@@ -19,8 +29,39 @@ Test size is less than zero:
     ...
     ValueError: size must be >= 0
 
-Test size is a float and less than zero:
+Test size is float and less than zero:
     >>> print_square(-1.1)
     Traceback (most recent call last):
     ...
     TypeError: size must be an integer
+
+Test size is float but positive:
+    >>> print_square(2.2)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+Test size is None:
+    >>> print_square(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+Test missing one argument:
+    >>> print_square()
+    Traceback (most recent call last):
+    ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+Test large square:
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
