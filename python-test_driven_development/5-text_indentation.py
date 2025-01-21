@@ -3,23 +3,21 @@
 
 
 def text_indentation(text):
-    """function that that print a text with 2 new lines
-    Args:
-    text to print
-    Return:
-    New text"""
+    """
+    Function that prints 2 new lines after ".?:" characters
+    """
+
     if type(text) is not str:
         raise TypeError("text must be a string")
-    specialchar = ('.', '?', ':')
-    result = ""
-    i = 0
-    while i < len(text):
-        result += text[i]
-        if text[i] in specialchar:
-            result += "\n\n"
-            i += 1
-            while i < len(text) and text[i] == ' ':
-                i += 1
-            continue
-        i += 1
-    print("\n".join([line.strip() for line in result.split("\n")]))
+
+    s = text[:]
+
+    for d in ".?:":
+        list_text = s.split(d)
+        s = ""
+        for i in list_text:
+            i = i.strip(" ")
+            s = i + d if s is "" else s + "\n\n" + i + d
+
+    print(s[:-3], end="")
+    
