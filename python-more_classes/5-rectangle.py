@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Rectangle class with a private instance attribute width and height"""
 class Rectangle:
     """Rectangle class with a private instance attribute width and height"""
     def __init__(self, width=0, height=0):
