@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 class Rectangle:
+    """Rectangle class with a private instance attribute width and height"""
     def __init__(self, width=0, height=0):
         self.height = height
         self.width = width
@@ -7,7 +8,7 @@ class Rectangle:
     @property
     def width(self):
         return self.__width
-    
+
     @width.setter
     def width(self, value):
         if type(value) is not int:
@@ -15,11 +16,11 @@ class Rectangle:
         if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
-    
+
     @property
     def height(self):
         return self.__height
-    
+
     @height.setter
     def height(self, value):
         if type(value) is not int:
@@ -30,12 +31,13 @@ class Rectangle:
 
     def area(self):
         return self.width * self.height
-    
+
     def perimeter(self):
         return 2 * (self.width + self.height)
 
     def __str__(self):
-        return "{}".format('\n'.join(['#' * self.width for i in range(self.height)]))
+        return "{}".format('\n'.join(['#' * self.width for
+                                     i in range(self.height)]))
 
     def __repr__(self):
         return "Rectangle({}, {})".format(self.width, self.height)
