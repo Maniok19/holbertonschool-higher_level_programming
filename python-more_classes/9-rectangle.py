@@ -55,12 +55,12 @@ class Rectangle:
         """Returns the rectangle with the character #."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "{}".format('\n'.join([str(self.print_symbol) * self.width for
-                                     i in range(self.height)]))
+        return "{}".format('\n'.join([str(self.print_symbol) * self.__width for
+                                     _ in range(self.__height)]))
 
     def __repr__(self):
         """Returns the string representation of the rectangle."""
-        return "Rectangle({}, {})".format(self.width, self.height)
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
         """Prints a message when an instance is deleted."""
