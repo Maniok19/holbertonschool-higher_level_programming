@@ -51,3 +51,7 @@ class Rectangle:
         """Returns the rectangle with the character #."""
         return "{}".format('\n'.join(['#' * self.width for
                                      i in range(self.height)]))
+
+    def __repr__(self):
+        """Returns the string representation of the rectangle."""
+        return "Rectangle({}, {})".format(self.width, self.height)
