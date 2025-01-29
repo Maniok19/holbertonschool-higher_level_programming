@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-"""Module that solves the N-queens problem"""
+"""Module that solves the N-queens problem, its very hard my friend"""
+
+
 import sys
 
 
 def is_safe(board, row, col, n):
-    """Check if a queen can be placed in a position"""
-    # Check this row on left side
+    """Check if a queen can be placed in a position on the board"""
     for i in range(col):
         if board[row][i] == 1:
             return False
 
-    # Check upper diagonal on left side
     for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
         if board[i][j] == 1:
             return False
 
-    # Check lower diagonal on left side
     for i, j in zip(range(row, n, 1), range(col, -1, -1)):
         if board[i][j] == 1:
             return False
@@ -24,7 +23,7 @@ def is_safe(board, row, col, n):
 
 
 def solve_nqueens(board, col, n):
-    """Solve the N-queens problem"""
+    """Solve the N-queens problem using backtracking"""
     if col >= n:
         print_solution(board)
         return True
@@ -37,7 +36,7 @@ def solve_nqueens(board, col, n):
 
 
 def print_solution(board):
-    """Print the solution"""
+    """Print the solution in all cases"""
     solution = []
     for i in range(len(board)):
         for j in range(len(board)):
@@ -47,7 +46,7 @@ def print_solution(board):
 
 
 def nqueens(n):
-    """Solver for the N-queens problem"""
+    """Solver for the N-queens problem using backtracking"""
     board = [[0 for _ in range(n)] for _ in range(n)]
     solve_nqueens(board, 0, n)
 
