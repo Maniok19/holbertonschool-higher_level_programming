@@ -2,6 +2,8 @@
 """N queens puzzle solver"""
 
 import sys
+
+
 def printSolution(board, size):
     """Print the solution in the required format"""
     solution = []
@@ -10,6 +12,7 @@ def printSolution(board, size):
             if board[i][j] == 1:
                 solution.append([i, j])
     print(solution)
+
 
 def isSafe(board, row, col, size):
     """Check if a queen can be placed on board[row][col]"""
@@ -30,6 +33,7 @@ def isSafe(board, row, col, size):
 
     return True
 
+
 def solveNQUtil(board, col, size):
     """Utility function to solve N Queen Problem"""
     if col >= size:
@@ -44,16 +48,18 @@ def solveNQUtil(board, col, size):
 
     return False
 
+
 def solveNQ(size):
     """Initialize the board and solve the N Queen Problem"""
     board = [[0 for x in range(size)] for y in range(size)]
 
-    if solveNQUtil(board, 0, size) == False:
+    if solveNQUtil(board, 0, size) is False:
         print("Solution does not exist")
         return False
 
     printSolution(board, size)
     return True
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
