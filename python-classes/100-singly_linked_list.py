@@ -6,7 +6,11 @@ class Node:
     """Class that defines a node"""
     def __init__(self, data, next_node=None):
         """Initialisation on variable atributes"""
+        if type(data) is not int:
+            raise TypeError("data must be an integer")
         self.__data = data
+        if next_node is not None and not isinstance(next_node, Node):
+            raise TypeError("next_node must be a Node object")
         self.__next_node = next_node
 
     @property
