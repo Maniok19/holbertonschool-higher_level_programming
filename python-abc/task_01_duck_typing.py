@@ -2,6 +2,7 @@
 """Module that defines a base geometry class"""
 
 from abc import ABC, abstractmethod
+from math import pi
 
 
 class Shape(ABC):
@@ -27,11 +28,11 @@ class Circle(Shape):
 
     def area(self):
         """Defines an area method for circles."""
-        return 3.141592653589793 * self.__radius ** 2
+        return pi * self.__radius ** 2
 
     def perimeter(self):
         """Defines a perimeter method for circles."""
-        return 2 * 3.141592653589793 * self.__radius
+        return 2 * pi * self.__radius
 
 
 class Rectangle(Shape):
