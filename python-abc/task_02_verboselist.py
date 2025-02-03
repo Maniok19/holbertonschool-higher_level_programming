@@ -3,24 +3,24 @@
 
 
 class VerboseList(list):
-    """VerboseList class that inherits from list."""
+    """Defines a verbose list class."""
     def append(self, item):
-        """Append an item to the list and print a message."""
+        """Appends an item to the list."""
         super().append(item)
-        print("Added [{}] to the list.".format(item))
+        print("Added {} to the list.".format(item))
 
-    def extend(self, items):
-        """Extend the list and print a message."""
-        super().extend(items)
-        print("Extended the list with [{}] items.".format(len(items)))
+    def extend(self, x):
+        """Extends the list with another"""
+        super().extend(x)
+        print("Extended the list with {} items.".format(len(x)))
 
-    def remove(self, value):
-        """Remove a value from the list and print a message."""
-        super().remove(value)
-        print("Removed [{}] from the list.".format(value))
+    def remove(self, item):
+        """Removes an item from the list"""
+        super().remove(item)
+        print("Removed {} from the list.".format(item))
 
     def pop(self, index=-1):
-        """pop an item from the list and notify"""
-        value = super().pop(index)
-        print("Popped [{}] from the list.".format(value))
-        return super().pop(index)
+        """Pops an item from the list"""
+        item = super().pop(index)
+        print("Popped {} from the list.".format(item))
+        return item
