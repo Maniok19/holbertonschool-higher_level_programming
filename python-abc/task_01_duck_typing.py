@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Duck typing - first element of a sequence """
+"""Module that defines a base geometry class"""
+
 from abc import ABC, abstractmethod
 
 
