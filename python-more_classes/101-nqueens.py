@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 """Module that solves the N-queens problem, its very hard my friend"""
-
-
 import sys
 
 
