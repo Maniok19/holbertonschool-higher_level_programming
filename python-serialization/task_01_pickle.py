@@ -22,8 +22,7 @@ class CustomObject:
             with open(filename, "wb") as f:
                 pickle.dump(self, f)
             return True
-        except Exception as e:
-            print(f"Serialization error: {e}")
+        except Exception:
             return None
 
     @classmethod
@@ -33,6 +32,5 @@ class CustomObject:
             with open(filename, "rb") as f:
                 return pickle.load(f)
 
-        except (FileNotFoundError, pickle.UnpicklingError) as e:
-            print(f"An error occurred while deserializing: {e}")
+        except Exception:
             return None
