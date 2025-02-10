@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+""" Module that contains a class Student """
+
+
 class Student:
     """Defines a student by first_name, last_name, and age."""
 
@@ -11,9 +14,10 @@ class Student:
     def to_json(self, attrs=None):
         """
         Retrieve a dictionary representation of a Student instance.
-        If attrs is a list of strings, only those attributes included in the list are retrieved.
+        If attrs is a list of strings, only those attributes included
         Otherwise, all attributes are retrieved.
         """
         if attrs is not None and isinstance(attrs, list):
-            return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
+            return {key: getattr(self, key)
+                    for key in attrs if hasattr(self, key)}
         return self.__dict__
