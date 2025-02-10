@@ -1,7 +1,11 @@
 #!/usr/bin/python3
+""" Module that contains a function that converts a CSV file to JSON"""
 import csv
 import json
+
+
 def convert_csv_to_json(filename):
+    """Converts a CSV file to JSON"""
     try:
         with open(filename, "r") as f:
             csv_r = csv.DictReader(f)

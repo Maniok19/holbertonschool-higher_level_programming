@@ -3,17 +3,21 @@ import pickle
 
 
 class CustomObject:
+    """Custom object class"""
     def __init__(self, name: str, age: int, is_student: bool):
+        """Constructor method"""
         self.name = name
         self.age = age
         self.is_student = is_student
 
     def display(self):
+        """Display method"""
         print("Name: {}".format(self.name))
         print("Age: {}".format(self.age))
         print("Is Student: {}".format(self.is_student))
 
     def serialize(self, filename):
+        """Serialize method"""
         try:
             with open(filename, "wb") as f:
                 pickle.dump(self, f)
@@ -21,8 +25,9 @@ class CustomObject:
             print(f"Serialization error: {e}")
             return None
 
-    @classmethod 
+    @classmethod
     def deserialize(cls, filename):
+        """Deserialize method"""
         try:
             with open(filename, "rb") as f:
                 return pickle.load(f)
