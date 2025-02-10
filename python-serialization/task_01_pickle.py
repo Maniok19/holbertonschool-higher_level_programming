@@ -4,7 +4,7 @@ import pickle
 
 class CustomObject:
     """Custom object class"""
-    def __init__(self, name: str, age: int, is_student: bool):
+    def __init__(self, name, age, is_student):
         """Constructor method"""
         self.name = name
         self.age = age
@@ -21,7 +21,7 @@ class CustomObject:
         try:
             with open(filename, "wb") as f:
                 pickle.dump(self, f)
-        except (IOError, pickle.PickleError) as e:
+        except Exception as e:
             print(f"Serialization error: {e}")
             return None
 
@@ -32,6 +32,6 @@ class CustomObject:
             with open(filename, "rb") as f:
                 return pickle.load(f)
 
-        except (IOError, pickle.PickleError) as e:
-            print(f"Deserialization error: {e}")
+        except (FileNotFoundError, pickle.UnpicklingError) as e:
+            print(f"An error occurred while deserializing: {e}")
             return None
