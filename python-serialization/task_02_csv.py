@@ -6,6 +6,9 @@ import json
 
 def convert_csv_to_json(filename):
     """Converts a CSV file to JSON"""
+    if not isinstance(filename, str):
+        print("Error: filename must be a string")
+        return False
     try:
         with open(filename, "r", encoding="utf-8") as f:
             csv_r = csv.DictReader(f)
