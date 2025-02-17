@@ -14,22 +14,26 @@ users = {
 
 @app.route("/")
 def home():
+    """ Home route """
     return "Welcome to the Flask API!"
 
 
 @app.route("/data")
 def data():
+    """ Data route """
     use = list(users.keys())
     return jsonify(use)
 
 
 @app.route("/status")
 def status():
+    """ Status route """
     return "OK"
 
 
 @app.route("/user/<string:name>")
 def user(name):
+    """ User route"""
     if name in users:
         return jsonify(users[name])
     else:
