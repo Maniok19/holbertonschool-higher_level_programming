@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-
+""" A simple HTTP server that returns a JSON response. """
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
+
 class MyHandler(BaseHTTPRequestHandler):
+    """A custom request handler."""
     def do_GET(self):
+        """Handle GET requests."""
         if self.path == "/":
             self.send_response(200)
             self.send_header("Content-type", "text/plain")

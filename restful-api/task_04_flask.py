@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+"""This module demonstrates how to use the Flask library to create"""
 from flask import Flask
 from flask import jsonify
+
 
 app = Flask(__name__)
 users = {
@@ -8,18 +10,23 @@ users = {
     "john": {"name": "John", "age": 35, "city": "New York"},
     "alice": {"name": "Alice", "age": 30, "city": "Chicago"}
 }
+
+
 @app.route("/")
-def home ():
+def home():
     return "Welcome to the Flask API!"
+
 
 @app.route("/data")
 def data():
     use = list(users.keys())
     return jsonify(use)
 
+
 @app.route("/status")
 def status():
     return "OK"
+
 
 @app.route("/user/<string:name>")
 def user(name):
