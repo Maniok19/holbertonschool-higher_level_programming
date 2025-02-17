@@ -87,4 +87,4 @@ def expired_token_callback(callback):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
