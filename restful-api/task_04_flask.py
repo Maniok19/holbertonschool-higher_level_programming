@@ -1,29 +1,27 @@
-#!/usr/bin/python3
-"""This module demonstrates how to use the Flask library to create"""
-from flask import Flask
-from flask import jsonify
-from requests import request
+#!/usr/bin/env python
+"""Task 4: Flask API """
 
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 users = {}
 
 
-@app.route("/")
-def home():
-    """ Home route """
-    return "Welcome to the Flask API!"
-
-
 @app.route("/data")
-def data():
-    """ Data route """
+def get_data():
+    """Data route"""
     return jsonify(list(users.keys()))
 
 
+@app.route("/")
+def home():
+    """Home route"""
+    return "Welcome to the Flask API!"
+
+
 @app.route("/status")
-def status():
-    """ Status route """
+def get_status():
+    """Status route"""
     return "OK"
 
 
