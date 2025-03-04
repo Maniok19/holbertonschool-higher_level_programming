@@ -6,6 +6,7 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
+    state = sys.argv[4]
 
     db = None
     cursor = None
@@ -19,10 +20,14 @@ if __name__ == "__main__":
         )
 
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM states ORDER BY id ASC")
+        cursor.execute("SELECT cities.name FROM cities JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id ASC",(state,))
         rows = cursor.fetchall()
         for row in rows:
-            print(row)
+            result = row[0]
+            if row != rows[-1]:
+                print(result, end = ", ")
+            else:
+                print(result)
 
     except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))

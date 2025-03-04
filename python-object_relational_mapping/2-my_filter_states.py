@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+#!/usr/bin/python3
 import MySQLdb
 import sys
 
@@ -6,6 +7,7 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
+    state = sys.argv[4]
 
     db = None
     cursor = None
@@ -19,7 +21,7 @@ if __name__ == "__main__":
         )
 
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM states ORDER BY id ASC")
+        cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (state,))
         rows = cursor.fetchall()
         for row in rows:
             print(row)
