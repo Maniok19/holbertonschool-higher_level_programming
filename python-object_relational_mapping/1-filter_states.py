@@ -21,11 +21,9 @@ if __name__ == "__main__":
 
         cursor = db.cursor()
         cursor.execute("SELECT * FROM states \
-                       WHERE `name` LIKE 'N%' ORDER BY `id` ASC")
+                       WHERE CONVERT (`name` USING Latin1) \
+                       COLLATE Latin1_General_CS \
+                       LIKE 'N%' ORDER BY `id` ASC")
         rows = cursor.fetchall()
         for row in rows:
             print(row)
-
-    except MySQLdb.Error as e:
-        print("MySQL Error: {}".format(e))
-        exit(1)
