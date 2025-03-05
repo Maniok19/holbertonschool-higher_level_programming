@@ -17,6 +17,3 @@ class State(Base):
                 primary_key=True,
                 nullable=False)
     name = Column(String(128), nullable=False)
-
-
-engine = create_engine('mysql+mysqldb://root:root@localhost:3306/test')
