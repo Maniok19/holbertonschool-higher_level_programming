@@ -9,4 +9,6 @@ class State(Base):
     id = Column(Integer, autoincrement=True, unique=True, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
 
-engine = create_engine ('mysql+mysqldb://root:root@localhost:3306/sqlalchemy')
+engine = create_engine('mysql+mysqldb://root:root@localhost:3306/test')
+
+engine.query(State).
