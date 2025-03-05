@@ -11,11 +11,8 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
 
-    db = None
-    cursor = None
     try:
         db = MySQLdb.connect(
-            host="localhost",
             port=3306,
             user=username,
             passwd=password,
@@ -24,7 +21,7 @@ if __name__ == "__main__":
 
         cursor = db.cursor()
         cursor.execute("SELECT * FROM states \
-                       WHERE name LIKE 'N%' ORDER BY id ASC")
+                       WHERE `name` LIKE 'N%' ORDER BY `id` ASC")
         rows = cursor.fetchall()
         for row in rows:
             print(row)
@@ -32,9 +29,3 @@ if __name__ == "__main__":
     except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))
         exit(1)
-
-    finally:
-        if cursor:
-            cursor.close()
-        if db:
-            db.close()

@@ -24,8 +24,7 @@ if __name__ == "__main__":
 
         cursor = db.cursor()
         cursor.execute("SELECT * FROM states \
-                       WHERE CONVERT (`name` USING Latin1) \
-                       COLLATE Latin1_General_CS = %s \
+                       WHERE `name` = %s \
                        ORDER BY id ASC", (state,))
         rows = cursor.fetchall()
         for row in rows:
