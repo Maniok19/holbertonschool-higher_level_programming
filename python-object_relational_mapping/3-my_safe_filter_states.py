@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+wabababababababjdbjbj
+"""
 import MySQLdb
 import sys
 
@@ -20,7 +23,8 @@ if __name__ == "__main__":
         )
 
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (state,))
+        cursor.execute("SELECT * FROM states \
+                       WHERE name = %s ORDER BY id ASC", (state,))
         rows = cursor.fetchall()
         for row in rows:
             print(row)
