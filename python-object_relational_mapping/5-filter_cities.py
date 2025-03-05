@@ -27,9 +27,4 @@ if __name__ == "__main__":
                     COLLATE Latin1_General_CS = %s \
                     ORDER BY cities.id ASC", (state,))
     rows = cursor.fetchall()
-    for row in rows:
-        result = row[0]
-        if row != rows[-1]:
-            print(result, end=", ")
-        else:
-            print(result)
+    print(", ".join([row[0] for row in rows]))
