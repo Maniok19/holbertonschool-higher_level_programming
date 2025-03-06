@@ -19,7 +19,5 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     session.add(State(name='Louisiana'))
-    results = session.query(State).all()
-    for result in results:
-        print("{}: {}".format(result.id, result.name))
+    print(session.query(State).filter(State.name == 'Louisiana').first().id)
     session.commit()
