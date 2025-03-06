@@ -19,7 +19,7 @@ if __name__ == "__main__":
     )
     Session = sessionmaker(bind=engine)
     session = Session()
-    session.add(State(name='Louisiana', id=6))
+    session.add(State(name='Louisiana'))
     results = session.query(State).all()
     for result in results:
         print("{}: {}".format(result.id, result.name))
