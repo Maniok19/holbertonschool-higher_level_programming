@@ -4,8 +4,8 @@ super super super cooooooooool
 """
 import sys
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
-from model_state import State
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
 
 
 if __name__ == "__main__":
@@ -16,6 +16,7 @@ if __name__ == "__main__":
             sys.argv[3]
         )
     )
-    session = Session(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
     results = session.query(State).order_by(State.id).first()
     print("Nothing" if not results else "{}: {}".format(results.id, results.name))
