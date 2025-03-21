@@ -26,7 +26,7 @@ def generate_invitations(template, attendees):
                 value = attendee.get(field)
                 if value is None:
                     value = 'N/A'
-                str_value = str(value)
+                str_value = str(value) if not isinstance(value, str) else value
                 replaced = replaced.replace(f'{field}', str_value)
 
             filename = f'output_{index}.txt'
