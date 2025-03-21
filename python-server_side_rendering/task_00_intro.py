@@ -1,4 +1,3 @@
-from os import path
 
 def generate_invitations(template, attendees):
     if not isinstance(template, str):
