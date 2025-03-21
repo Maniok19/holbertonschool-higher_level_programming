@@ -2,10 +2,10 @@ from os import path
 
 def generate_invitations(template, attendees):
     if not isinstance(template, str):
-        print("Error: Invalid template type. Expected string.")
+        print(f"{type(template)}")
         return
     if not isinstance(attendees, list) or not all(isinstance(a, dict) for a in attendees):
-        print("Error: Invalid attendees type. Expected list of dictionaries.")
+        print(f"{type(attendees)}")
         return
     
     # Handle empty content cases
