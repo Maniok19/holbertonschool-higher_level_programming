@@ -25,7 +25,7 @@ def generate_invitations(template, attendees):
             for field in required_fields:
                 value = attendee.get(field)
                 if value is None:
-                    value = 'N/A'
+                    value = f'{field}: N/A'
                 str_value = str(value) if not isinstance(value, str) else value
                 replaced = replaced.replace(f'{field}', str_value)
 
