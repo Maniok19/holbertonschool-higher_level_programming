@@ -18,19 +18,21 @@ def generate_invitations(template, attendees):
 
     required_fields = ['name', 'event_title', 'event_date', 'event_location']
 
-    try:
+    
 
-        for index, attendee in enumerate(attendees, start=1):
-            replaced = template
-            for field in required_fields:
-                value = attendee.get(field)
-                if value is None:
-                    value = f'{field}: N/A'
-                str_value = str(value) if not isinstance(value, str) else value
-                replaced = replaced.replace(f'{field}', str_value)
+    for index, attendee in enumerate(attendees, start=1):
+        replaced = template
+        for field in required_fields:
+            value = attendee.get(field)
+            if value is None:
+                value = f'{field}: N/A'
+            str_value = str(value) if not isinstance(value, str) else value
+            replaced = replaced.replace(f'{field}', str_value)
 
-            filename = f'output_{index}.txt'
+        filename = f'output_{index}.txt'
+
+        try:
             with open(filename, 'w') as file:
                 file.write(replaced)
-    except Exception as e:
-        print('Fatal Error')
+        except Exception as e:
+            print('Fatal Error')
