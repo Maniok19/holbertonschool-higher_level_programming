@@ -23,6 +23,7 @@ def generate_invitations(template, attendees):
     if not template:
         print("Template is empty, no output files generated.")
         return []
+
     if not attendees:
         print("No data provided, no output files generated.")
         return []
@@ -39,9 +40,5 @@ def generate_invitations(template, attendees):
 
         filename = f'output_{index}.txt'
 
-        try:
-            with open(filename, 'w') as file:
-                file.write(replaced)
-
-        except Exception as e:
-            print('Fatal Error')
+        with open(filename, 'w') as file:
+            file.write(replaced)
