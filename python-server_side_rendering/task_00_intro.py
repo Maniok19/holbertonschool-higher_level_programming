@@ -1,12 +1,21 @@
 #!/usr/bin/python3
+"""
+Module for genreating file invitations
+"""
+
+
 def generate_invitations(template, attendees):
+    """
+    Generate personalized invitation files from a template and attendee list.
+    """
     if not isinstance(template, str):
         print("Error: template must be a string")
         return []
-    if not isinstance(attendees, list) or not all(isinstance(a, dict) for a in attendees):
+    if not isinstance(attendees, list)\
+            or not all(isinstance(a, dict) for a in attendees):
         print("Error: attendees must be a list of dictionaries")
         return []
-    
+
     # Handle empty content cases
     if not template:
         print("Template is empty, no output files generated.")
@@ -15,7 +24,6 @@ def generate_invitations(template, attendees):
         print("No data provided, no output files generated.")
         return []
 
-    g_file = []
     required_fields = ["name", "event_title", "event_date", "event_location"]
     for index, attendee in enumerate(attendees, start=1):
         replaced = template
@@ -31,7 +39,6 @@ def generate_invitations(template, attendees):
         try:
             with open(filename, 'w') as file:
                 file.write(replaced)
-            g_file.append(filename)
-            return g_file
+
         except Exception as e:
             print('Fatal Error')
