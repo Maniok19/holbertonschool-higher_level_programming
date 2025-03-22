@@ -1,6 +1,6 @@
-Hello {Alice},
+Hello Alice,
 
-You are invited to the {Python Conference} on {2023-07-15} at {New York}.
+You are invited to the Python Conference on 2023-07-15 at New York.
 
 We look forward to your presence.
 
